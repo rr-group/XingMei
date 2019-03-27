@@ -1,0 +1,42 @@
+<!--pages/group/group.wxml-->
+<view class='group'>
+  <view class='group_hint' bindtap='bindbonus'> 如何获取团队
+    <image style='width:20rpx;height:20rpx;' src="/images/botton_more_red@3x.png"></image>
+  </view>
+  <view class='group_content' >
+   <view wx:for="{{contentList}}" wx:key="key" class="{{contentList.length>0 ? 'show':'hidden'}}">
+      <view class='group_contentList' id="{{item.name}}" bindtap='gotableinfo'>
+        <view class='contentList_img'>
+          <image src='{{item.img}}'></image>
+        </view>
+        <view class='contentList_name'>{{item.name}}</view>
+        <view>
+          <view class="{{item.num == 0 ? 'hidden':'show'}}">
+            <view class="contentList_set">
+              <image src='{{item.img}}'></image>
+              <image src='{{item.img}}'></image>
+              <image src='{{item.img}}'></image>
+              <text class='contentList_setText'>{{item.num}}</text>
+            </view>
+          </view>
+          <view class="{{item.num == 0 ? 'show':'hidden'}}">
+          <view class='no_text'> Ta当前还没有团队哦</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="group_no {{contentList.length==0 ? 'show':'hidden'}}">当前没有团队</view>
+    <!-- 弹出框 -->
+  <view class='mask' hidden="{{nullhits}}" catchtouchmove='ture'>
+    <view class="myBouns">
+      <view class="myBouns_title">{{teamTitle}}</view>
+      <view class='myBouns_contcen'>
+        <scroll-view scroll-y="true" style="height:360rpx;">
+          <view class="myBouns_contcenList" wx:for="{{Howget}}" wx:key="key">{{item}}</view>
+        </scroll-view>
+      </view>
+      <view class='myBouns_btn' bindtap='BounsClones'>知道了</view>
+    </view>
+  </view>
+</view>

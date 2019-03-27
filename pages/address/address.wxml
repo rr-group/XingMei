@@ -1,0 +1,36 @@
+<!--pages/ediaddress/ediaddress.wxml-->
+<view class='ediaddress'>
+  <view class='address_message'>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="section">
+        <view class="section__title">姓名</view>
+        <input class="section_input" name="name" placeholder="收货人姓名" value='{{name}}' />
+      </view>
+      <view class="section">
+        <view class="section__title">电话</view>
+        <input class="section_input" name="mobile" placeholder="收获人手机号" value='{{mobile}}' />
+      </view>
+      <!-- <view class="section" style='border:0;'>
+        <view class="section__title">地址</view>
+        <input class="section_input" style='width:480rpx;' name="ads" placeholder="请输入详细地址"/>
+      </view> -->
+      <view class="section">
+      <view class="section__title">选择城市</view>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}}，{{region[1]}}，{{region[2]}}
+          </view>
+        </picker>
+      </view>
+       <view class="section">
+        <view class="section__title">收货地址</view>
+        <input class="section_input" name="address" placeholder="收获人地址" value='{{address}}'/>
+      </view>
+      <!-- <view class='message_discern'>识别地址</view>
+       <text class='message_cancel'>取消</text> -->
+      <view class="btn-area">
+        <button formType="submit">保存并使用</button>
+      </view>
+    </form>
+  </view>
+</view>

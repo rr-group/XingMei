@@ -1,0 +1,201 @@
+<!--pages/order/order.wxml-->
+<view class='order'>
+  <view class="order_navbar">
+    <view class="item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">全部</view>
+    <view class="item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">待付款</view>
+    <view class="item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">待发货</view>
+    <view class="item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">已发货</view>
+    <view class="item {{currentTab==4?'active':''}}" data-current="4" bindtap="clickTab">已完成</view>
+  </view>
+  <!-- 全部 -->
+  <view class="{{currentTab == 0 ? 'show':'hidden'}}" wx:if="{{allcommodity.length>0}}">
+    <view class='allCommodity' wx:for="{{allcommodity}}" wx:key="key" catchtap="toOrderDetail">
+      <view class='allCommodity_title'>
+        <text class='allCommodity_titleLeft'>{{'订单号：' + item.name}}</text>
+        <text class='allCommodity_titleright'>{{item.statusName}}</text>
+      </view>
+      <view class='allCommodity_content' wx:for="{{item.productList}}" wx:key="key">
+        <view class='allCommodity_contentLeft'>
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class='allCommodity_contentright'>
+          <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
+          <view class='contentright_hint'>{{item.productId==1 ? '398元买1送5，6盒/1组  5片1盒' : '5片1盒'}}</view>
+          <view class='contentright_price'>
+            <text class='contentright_priceTotal'>{{item.price}}</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="{{currentTab == 0 ? 'show':'hidden'}}" wx:else>
+    <view class='nothave'>
+      <view class='nothave_img'>
+        <image src='/images/smiling.png'></image>
+      </view>
+      <text class='nothave_text'>暂无订单</text>
+    </view>
+  </view>
+  <!-- 待付款 -->
+  <view class="{{currentTab == 1 ? 'show':'hidden'}}" wx:if="{{carts.length>0}}">
+    <view class='allCommodity' wx:for="{{carts}}" wx:key="key">
+      <view class='allCommodity_title'>
+        <text class='allCommodity_titleLeft'>{{'订单号：' + item.name}}</text>
+        <text class='allCommodity_titleright' bindtap="Commodityedit" data-id='{{item.id}}'>{{item.statusName}}</text>
+      </view>
+      <view class='allCommodity_content' wx:for="{{item.productList}}" wx:key="key">
+        <view class='Commodity_select'>
+          <!-- wx:if 是否选择显示不同图标 -->
+          <icon wx:if="{{item.selected}}" type="success" color="#d288c3" bindtap="selectList" data-index="{{index}}" size="18" />
+          <icon wx:else type="circle" bindtap="selectList" data-index="{{index}}" size="18" />
+        </view>
+        <view class='allCommodity_contentLeft'>
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class='allCommodity_contentright'>
+          <view class=" {{item.isShow?'hidden':'show'}}">
+            <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
+          </view>
+          <!-- 增加减少数量按钮 -->
+          <view class=" {{item.isShow?'show':'hidden'}}">
+            <view class='shoppingCart'>
+              <text wx:if="{{item.count==1}}" class="shoppingCart_subtract" style="background:#f8f8f8;border:0" bindtap="minusCount" data-index="{{index}}">-</text>
+              <text wx:else class="shoppingCart_subtract" style="background:#fff;border:1px solid #efefef" bindtap="minusCount" data-index="{{index}}">-</text>
+              <text class='shoppingCart_num'>{{item.count}}</text>
+              <text class='shoppingCart_add' bindtap="addCount" data-index="{{index}}">+</text>
+            </view>
+            <!-- 删除按钮 -->
+            <text class='delete_btn' bindtap="deleteList" data-index="{{index}}"> 删除 </text>
+          </view>
+          <view class='contentright_hint'>{{item.productId==1 ? '398元买1送5，6盒/1组  5片1盒' : '5片1盒'}}</view>
+          <view class='contentright_price'>
+            <text class='contentright_priceTotal'>{{item.price}}</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='shopping_hint'>
+      <view class='shopping_hintImg'>
+        <image src='/images/shoppingtrolley.png'></image>
+      </view>
+      <text class='hopping_hintText'>已同步至微信购物车</text>
+    </view>
+    <!-- 底部导航 -->
+    <view class='bottom_nav'>
+      <!-- wx:if 是否全选显示不同图标 -->
+      <view class='navCheckall'>
+        <icon wx:if="{{selectAllStatus}}" class='allSelelct' type="success" color="#d288c3" bindtap="selectAll" size="18" />
+        <icon wx:else type="circle" class='allSelelct' bindtap="selectAll" size="18" />
+        <view class='navCheckall_text'>全选</view>
+      </view>
+      <!-- 总价 -->
+      <view class='nav_left'>
+        <view class='navTotalprices'>
+          <text>合计：</text>
+          <text class='navsizeClor'>￥{{totalPrice}}</text>
+          <view class='navHnit'>不含运费</view>
+        </view>
+        <button class='navButton'>结算</button>
+      </view>
+    </view>
+  </view>
+  <view class="{{currentTab == 1 ? 'show':'hidden'}}" wx:else>
+    <view class='nothave'>
+      <view class='nothave_img'>
+        <image src='../../images/smiling.png'></image>
+      </view>
+      <text class='nothave_text'>暂无订单</text>
+    </view>
+  </view>
+  <view class="{{currentTab == 2 ? 'show':'hidden'}}" wx:if="{{sendgoods.length>0}}">
+    <view class='allCommodity' wx:for="{{sendgoods}}" wx:key="key" catchtap="toOrderDetail">
+      <view class='allCommodity_title'>
+        <text class='allCommodity_titleLeft'>{{'订单号：' + item.name}}</text>
+        <text class='allCommodity_titleright'>{{item.statusName}}</text>
+      </view>
+      <view class='allCommodity_content'>
+        <view class='allCommodity_contentLeft'>
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class='allCommodity_contentright'>
+          <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
+          <view class='contentright_hint'>{{item.productId==1 ? '398元买1送5，6盒/1组  5片1盒' : '5片1盒'}}</view>
+          <view class='contentright_price'>
+            <text class='contentright_priceTotal'>{{item.price}}</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="{{currentTab == 2 ? 'show':'hidden'}}" wx:else>
+    <view class='nothave'>
+      <view class='nothave_img'>
+        <image src='../../images/smiling.png'></image>
+      </view>
+      <text class='nothave_text'>暂无订单</text>
+    </view>
+  </view>
+  <!-- 已发货 -->
+  <view class="{{currentTab == 3 ? 'show':'hidden'}}" wx:if="{{shipped.length>0}}">
+    <view class='allCommodity' wx:for="{{shipped}}" wx:key="key" catchtap="toOrderDetail">
+      <view class='allCommodity_title'>
+        <text class='allCommodity_titleLeft'>{{'订单号：' + item.name}}</text>
+        <text class='allCommodity_titleright'>{{item.statusName}}</text>
+      </view>
+      <view class='allCommodity_content' wx:for="{{item.productList}}" wx:key="key">
+        <view class='allCommodity_contentLeft'>
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class='allCommodity_contentright'>
+          <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
+          <view class='contentright_hint'>{{item.productId==1 ? '398元买1送5，6盒/1组  5片1盒' : '5片1盒'}}</view>
+          <view class='contentright_price'>
+            <text class='contentright_priceTotal'>{{item.price}}</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="{{currentTab == 3 ? 'show':'hidden'}}" wx:else>
+    <view class='nothave'>
+      <view class='nothave_img'>
+        <image src='../../images/smiling.png'></image>
+      </view>
+      <text class='nothave_text'>暂无订单</text>
+    </view>
+  </view>
+  <!-- 已完成 -->
+  <view class="{{currentTab == 4 ? 'show':'hidden'}}" wx:if="{{offstocks.length>0}}">
+    <view class='allCommodity' wx:for="{{offstocks}}" wx:key="key" catchtap="toOrderDetail">
+      <view class='allCommodity_title'>
+        <text class='allCommodity_titleLeft'>{{'订单号：' + item.name}}</text>
+        <text class='allCommodity_titleright'>{{item.statusName}}</text>
+      </view>
+      <view class='allCommodity_content' wx:for="{{item.productList}}" wx:key="key">
+        <view class='allCommodity_contentLeft'>
+          <image src="{{item.image}}"></image>
+        </view>
+        <view class='allCommodity_contentright'>
+          <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
+          <view class='contentright_hint'>{{item.productId==1 ? '398元买1送5，6盒/1组  5片1盒' : '5片1盒'}}</view>
+          <view class='contentright_price'>
+            <text class='contentright_priceTotal'>{{item.price}}</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="{{currentTab == 4 ? 'show':'hidden'}}" wx:else>
+    <view class='nothave'>
+      <view class='nothave_img'>
+        <image src='../../images/smiling.png'></image>
+      </view>
+      <text class='nothave_text'>暂无订单</text>
+    </view>
+  </view>
+</view>

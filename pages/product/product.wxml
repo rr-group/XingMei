@@ -1,0 +1,67 @@
+<!--pages/bannerDetails/bannerDetails.wxml-->
+<view class='bannerDetails'>
+  <view class='bannerDetails_btn' bindtap='clickme'>立即购买</view>
+
+  <!--屏幕背景变暗的背景  底部支付弹出框  -->
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <!--弹出框  -->
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <view class='bannerDetails_boxTitle'>
+      <view class='boxTitle_clones' bindtap="clonesbuy"><image src='../..https://img.feiwuwl.com/28/product/botton_close@3x.png'></image></view>
+      <view class='boxTitle_head'>支付邮费</view>
+    </view>
+    <view class='bannerDetails_money'>￥19.8</view>
+    <view class='attrBox_text'>你当前不足5片，不能包邮</view>
+    <view class='attrBox_text'>请每片支付9.9邮费，面膜才能发出</view>
+    <view class='attrBox_btn' bindtap="buyer">
+      <button>支付邮费</button>
+    </view>
+  </view>
+  <!-- 尚未支付弹出框 -->
+  <view class='mask' hidden="{{nullhits}}" catchtouchmove='ture'>
+    <view class="myToast">
+     <view class='myToast_hint'>提示</view>
+     <view class='myToast_text'>订单尚未支付</view>
+     <view class='myToast_btn' catchtap="BounsClones">确定</view>
+    </view>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_1.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_2.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_3.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_4.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_5.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_6.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_7.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_8.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_9.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_10.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_11.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_12.png'></image>
+  </view>
+  <view class='bannerDetails_img'>
+    <image src='https://img.feiwuwl.com/28/product/pic_13.png'></image>
+  </view>
+</view>

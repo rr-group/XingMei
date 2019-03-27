@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/address/address",
+    "pages/order/order",
+    "pages/orderDetail/orderDetail",
+    "pages/addressList/addressList",
+    "pages/bonus/bonus",
+    "pages/myMask/myMask",
+    "pages/group/group",
+    "pages/confirmOrder/confirmOrder",
+    "pages/groupChild/groupChild",
+    "pages/product/product"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "第二肌面膜旗舰店",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#d288c3",
+    "borderStyle": "white",
+    "backgroundColor": "#fafafa",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我"
+      }
+    ]
+  }
+}

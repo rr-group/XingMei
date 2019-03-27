@@ -1,0 +1,46 @@
+<!--pages/maskDelivery/maskDelivery.wxml-->
+<view class='maskDelivery'>
+  <!-- <view class='maskDelivery_address'>
+    <text class='maskDelivery_addressa'>请选择收获地址</text>
+    <text class='maskDelivery_addressb'>></text>
+  </view> -->
+  <view class='maskDelivery_addressBox'>
+    <view style='float:left;width:85%;'>
+      <view class='addressBox_top'>
+        <text class='maskDelivery_addressBoxa'>请选择收获地址</text>
+        <text class='maskDelivery_addressBoxb'>15025684569</text>
+      </view>
+      <view class='addressBox_bottom'>收获地址：北京朝阳区 世纪东方城</view>
+    </view>
+    <view style='float:right;line-height:112rpx;' class='maskDelivery_addressb'>></view>
+  </view>
+  <view class='maskDelivery_content'>
+    <view class='allCommodity' wx:for="{{carts}}" wx:key="key">
+      <view class='allCommodity_content'>
+        <view class='allCommodity_contentLeft'>
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class='allCommodity_contentright'>
+          <view class=" {{item.isShow?'hidden':'show'}}">
+            <text class='contentright_title' decode="{{true}}">{{item.title}}</text>
+          </view>
+          <view class='contentright_hint'>{{item.hint}}</view>
+          <view class='contentright_price'>
+            <text class='contentright_priceTotal'>{{item.total}}</text>
+            <text class='contentright_priceNum'>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部导航 -->
+  <view class='bottom_nav'>
+    <!-- 总价 -->
+    <view class='nav_left'>
+      <view class='navTotalprices'>
+        <text>合计：</text>
+        <text class='navsizeClor'>￥{{totalPrice}}</text>
+      </view>
+    </view>
+  </view>
+</view>

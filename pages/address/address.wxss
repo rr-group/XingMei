@@ -1,0 +1,63 @@
+/* pages/ediaddress/ediaddress.wxss */
+page {
+  background-color: #f8f8f8;
+}
+.address_message {
+  width: 100%;
+  height: 456rpx;
+  background: #fff;
+  margin-top: 24rpx;
+  position: relative;
+}
+
+.section {
+  width: 90%;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  border-bottom: 1px solid #efefef;
+}
+
+.section_input{
+  margin-top:16rpx;
+  height: 38rpx;
+  margin-left:90rpx;
+  padding-left: 10rpx;
+}
+.message_discern{
+  width:235rpx;
+  height: 56rpx;
+  border: 1px solid #efefef;
+  border-radius: 6rpx;
+  color:#6d6d6d;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 56rpx;
+  margin:0rpx auto;
+  margin-top:50rpx;
+}
+.picker{
+  margin-left: 30rpx;
+   /* color:#6d6d6d; */
+}
+.message_cancel{
+  position: absolute;
+  right:36rpx;
+  bottom:42rpx;
+  font-size: 26rpx;
+  color:#3388ff;
+  
+}
+.btn-area{
+  margin-top:88rpx;
+}
+.btn-area button{
+  width:650rpx;
+  margin:0 auto;
+  background: #d288c3;
+  color:#fff;
+  font-size: 34rpx;
+}

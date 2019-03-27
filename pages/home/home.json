@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabbar": "../../component/tabbarComponent/tabbar"
+  },
+    "backgroundColor": "#f8f8f8"
+}

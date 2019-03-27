@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2CF53702-2A99-4FBC-91D1-96C268E0CF7A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>XingMei.Applet</RootNamespace>
+    <AssemblyName>XingMei.Applet</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="images\Botton_address_top_right.png" />
+    <Content Include="images\Botton_Customer service%403x.png" />
+    <Content Include="images\Botton_more%403x.png" />
+    <Content Include="images\botton_more_Center.png" />
+    <Content Include="images\center_bg_top.png" />
+    <Content Include="images\icon_1_center.png" />
+    <Content Include="images\icon_2_center.png" />
+    <Content Include="images\icon_3_center.png" />
+    <Content Include="images\icon_4_center.png" />
+    <Content Include="images\icon_Bonus%403x.png" />
+    <Content Include="images\icon_bonus_center.png" />
+    <Content Include="images\icon_mask%403x.png" />
+    <Content Include="images\icon_mask_center.png" />
+    <Content Include="images\icon_share%403x.png" />
+    <Content Include="images\icon_share_center.png" />
+    <Content Include="images\progressBar_bg%403x.png" />
+    <Content Include="images\progressBar_line%403x.png" />
+    <Content Include="images\round_bg%403x.png" />
+    <Content Include="images\round_right%403x.png" />
+    <Content Include="images\smiling.png" />
+    <Content Include="images\Tabbar_center_h%403x.png" />
+    <Content Include="images\Tabbar_center_n%403x.png" />
+    <Content Include="images\Tabbar_home_h%403x.png" />
+    <Content Include="images\Tabbar_home_n%403x.png" />
+    <Content Include="images\Tabbar_Sign in%403x.png" />
+    <Content Include="images\weixin.png" />
+    <Content Include="pages\addressList\addressList.js" />
+    <Content Include="pages\address\address.js" />
+    <Content Include="pages\bonus\bonus.js" />
+    <Content Include="pages\orderDetail\orderDetail.js" />
+    <Content Include="pages\confirmOrder\confirmOrder.js" />
+    <Content Include="pages\groupChild\groupChild.js" />
+    <Content Include="pages\group\group.js" />
+    <Content Include="pages\home\home.js" />
+    <Content Include="pages\index\index.js" />
+    <Content Include="pages\myMask\myMask.js" />
+    <Content Include="pages\order\order.js" />
+    <Content Include="pages\product\product.js" />
+    <Content Include="tabbarComponent\icon\icon_home.png" />
+    <Content Include="tabbarComponent\icon\icon_homes.png" />
+    <Content Include="tabbarComponent\icon\icon_home_HL.png" />
+    <Content Include="tabbarComponent\icon\icon_home_HLs.png" />
+    <Content Include="tabbarComponent\icon\icon_mine.png" />
+    <Content Include="tabbarComponent\icon\icon_mines.png" />
+    <Content Include="tabbarComponent\icon\icon_mine_HL.png" />
+    <Content Include="tabbarComponent\icon\icon_mine_HLs.png" />
+    <Content Include="tabbarComponent\icon\icon_release.png" />
+    <Content Include="tabbarComponent\icon\icon_releases.png" />
+    <Content Include="tabbarComponent\tabbar.js" />
+    <None Include="pages\addressList\addressList.json" />
+    <None Include="pages\addressList\addressList.wxml" />
+    <None Include="pages\addressList\addressList.wxss" />
+    <None Include="pages\bonus\bonus.json" />
+    <None Include="pages\bonus\bonus.wxml" />
+    <None Include="pages\bonus\bonus.wxss" />
+    <None Include="pages\orderDetail\orderDetail.json" />
+    <None Include="pages\orderDetail\orderDetail.wxml" />
+    <None Include="pages\orderDetail\orderDetail.wxss" />
+    <None Include="pages\confirmOrder\confirmOrder.json" />
+    <None Include="pages\confirmOrder\confirmOrder.wxml" />
+    <None Include="pages\confirmOrder\confirmOrder.wxss" />
+    <None Include="pages\groupChild\groupChild.json" />
+    <None Include="pages\groupChild\groupChild.wxml" />
+    <None Include="pages\groupChild\groupChild.wxss" />
+    <None Include="pages\group\group.json" />
+    <None Include="pages\group\group.wxml" />
+    <None Include="pages\group\group.wxss" />
+    <None Include="pages\myMask\myMask.json" />
+    <None Include="pages\myMask\myMask.wxml" />
+    <None Include="pages\myMask\myMask.wxss" />
+    <None Include="pages\product\product.json" />
+    <None Include="pages\product\product.wxml" />
+    <None Include="pages\product\product.wxss" />
+    <None Include="utils\validate.js" />
+    <None Include="utils\underscore.js" />
+    <None Include="utils\security.js" />
+    <None Include="utils\config.js" />
+    <None Include="utils\util.js" />
+    <None Include="utils\ui.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.json" />
+    <None Include="app.wxss" />
+    <None Include="pages\address\address.json" />
+    <None Include="pages\address\address.wxml" />
+    <None Include="pages\address\address.wxss" />
+    <None Include="pages\home\home.json" />
+    <None Include="pages\home\home.wxml" />
+    <None Include="pages\home\home.wxss" />
+    <None Include="pages\index\index.json" />
+    <None Include="pages\index\index.wxml" />
+    <None Include="pages\index\index.wxss" />
+    <None Include="pages\order\order.json" />
+    <None Include="pages\order\order.wxml" />
+    <None Include="pages\order\order.wxss" />
+    <None Include="project.config.json" />
+    <None Include="tabbarComponent\tabbar.json" />
+    <None Include="tabbarComponent\tabbar.wxml" />
+    <None Include="tabbarComponent\tabbar.wxss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

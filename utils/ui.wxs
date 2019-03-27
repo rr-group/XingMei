@@ -1,0 +1,11 @@
+//格式渲染
+var render = {
+  datetime:function(dt){
+    return dt;
+  }
+};
+
+module.exports = {
+  renderDateTime:render.datetime
+}
+
