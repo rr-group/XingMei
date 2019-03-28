@@ -29,6 +29,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+      clickEvent:function(e){ 
+          wx.navigateTo({
+              url: '/pages/share/share',
+          })
+      }
   }
 })

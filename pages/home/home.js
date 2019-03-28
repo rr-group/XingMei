@@ -45,13 +45,6 @@ Page({
         r1: 45,
         r2: 30
     },
-  //分享
-  homeshare: function () {
-    wx.navigateTo({
-      url: '/pages/share/share'
-    });
-   
-  },
     // 提现
     bindWithdraw: function () {
         wx.navigateTo({
@@ -238,5 +231,10 @@ Page({
             desc: '自定义分享描述',
             path: '/pages/home/home?uid=123'
         }
+    },
+    clickEvent:function(e){ 
+        wx.navigateTo({
+            url: '/pages/share/share'
+        })
     }
 })
