@@ -45,6 +45,13 @@ Page({
         r1: 45,
         r2: 30
     },
+  //分享
+  homeshare: function () {
+    wx.navigateTo({
+      url: '/pages/share/share'
+    });
+   
+  },
     // 提现
     bindWithdraw: function () {
         wx.navigateTo({

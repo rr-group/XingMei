@@ -115,7 +115,7 @@
   <image class='customService' src='/images/Botton_Customer service@3x.png'></image>
   <!-- </view> -->
   <!-- 固定的分享图片 -->
-  <view class='home_tabBarSign'>
+  <view class='home_tabBarSign' bindtap='homeshare'>
     <view class='tabBarSign_btn'>
       <view class='tabBarSign_btnimg'>
 

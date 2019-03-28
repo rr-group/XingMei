@@ -11,7 +11,8 @@
     "pages/group/group",
     "pages/confirmOrder/confirmOrder",
     "pages/groupChild/groupChild",
-    "pages/product/product"
+    "pages/product/product",
+    "pages/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",
