@@ -1,7 +1,7 @@
 {
-  "usingComponents": {
-    "tabbar": "../../component/tabbarComponent/tabbar"
-  },
+"usingComponents": {
+  "tabbar": "../../component/tabbarComponent/tabbar"
+},
   "navigationBarTitleText": "个人中心",
   "backgroundColor": "#f8f8f8"
 }

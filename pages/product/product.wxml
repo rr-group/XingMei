@@ -1,6 +1,6 @@
 <!--pages/bannerDetails/bannerDetails.wxml-->
 <view class='bannerDetails'>
-  <view class='bannerDetails_btn' bindtap='clickme'>立即购买</view>
+  <button class='bannerDetails_btn'  bindgetuserinfo='clickme' open-type="getUserInfo">立即购买</button>
 
   <!--屏幕背景变暗的背景  底部支付弹出框  -->
   <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>

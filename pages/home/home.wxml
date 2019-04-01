@@ -4,7 +4,7 @@
         <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActivecolor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='swiper'>
             <block wx:for="{{bannerList}}" wx:key="key">
                 <swiper-item class="swiper_url">
-                    <image class="slide-image" src="{{item.image}}" mode="widthFix" bindtap='tapBanner' data-url='{{item.url}}' />
+                    <image class="slide-image" src="{{item.image}}" mode="widthFix" data-url='{{item.url}}' />
                 </swiper-item>
             </block>
         </swiper>

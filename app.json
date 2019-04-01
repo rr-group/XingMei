@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/index/index",
+        "pages/index/index",
     "pages/address/address",
     "pages/order/order",
     "pages/orderDetail/orderDetail",
@@ -12,6 +12,7 @@
     "pages/confirmOrder/confirmOrder",
     "pages/groupChild/groupChild",
     "pages/product/product",
+
     "pages/share/share"
   ],
   "window": {
@@ -31,7 +32,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/home/home",
         "text": "我"
       }
     ]

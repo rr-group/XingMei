@@ -25,34 +25,38 @@ Page({
   
   //点击立即购买
   //点击我显示底部弹出框
-  clickme: function () {
-    //下单
-    util.requestApi({
-      url: 'trade/order',
-      data: {
-        productId: 1
-      },
-      type: 'post',
-      success: res => {
-        //还有未支付的订单
-        if (res == "HasNoPayOrder") {
-          wx.showToast({
-            title: '该产品还有未支付的订单，请勿重复下单！',
-            icon: 'none',
-            duration:3000,
-            success:function(){
-              wx.navigateTo({
-                url: '../../pages/order/order?id=1'
-              });
-            }
-          });
-        }else{
-          wx.navigateTo({
-            url: '../../pages/order/order?id=1'
-          });
+  clickme: function (res) {
+    var userinfos = res.detail.userInfo;
+    if (userinfos != undefined) {
+      //下单
+      util.requestApi({
+        url: 'trade/order',
+        data: {
+          productId: 1
+        },
+        type: 'post',
+        success: res => {
+          //还有未支付的订单
+          if (res == "HasNoPayOrder") {
+            wx.showToast({
+              title: '该产品还有未支付的订单，请勿重复下单！',
+              icon: 'none',
+              duration: 3000,
+              success: function () {
+                wx.navigateTo({
+                  url: '../../pages/order/order?id=1'
+                });
+              }
+            });
+          } else {
+            wx.navigateTo({
+              url: '../../pages/order/order?id=1'
+            });
+          }
         }
-      }
-    });
+      });
+    }
+    
 
     //this.showModal();
   },
