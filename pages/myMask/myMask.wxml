@@ -28,7 +28,7 @@
       <view class='myBouns_contcen'>
       <view style="margin-top:105rpx;" class="{{topList[1] == 0 ? ' show ':'hidden '}}">暂无记录</view>
         <scroll-view scroll-y="true" style="height:360rpx;">
-          <view class="myBouns_contcenList {{idBtn ==0 ? 'show':'hidden'}}" wx:for="{{Howget}}" wx:key="key">{{item}}</view>
+          <view class="myBouns_contcenList {{idBtn ==0 ? 'show':'hidden'}}">{{desc}}</view>
           <view class="myBouns_accumuList {{idBtn ==1 ? 'show':'hidden'}}" wx:for="{{totalList}}" wx:key="key">
             <view style='margin-top:25rpx;'>
               <view class='accumuList_left'>

@@ -22,9 +22,9 @@ page {
 
 .maskDelivery_addressBox {
   width: 90%;
-  font-size: 26rpx;
-  margin-left: 5%;
+  font-size: 26rpx; 
   min-height: 155rpx;
+  padding:20rpx 40rpx; background:#fff; border-bottom:2rpx solid #eee;
 }
 
 .addressBox_top {

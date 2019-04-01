@@ -1,33 +1,26 @@
-<!--pages/maskDelivery/maskDelivery.wxml-->
 <view class='maskDelivery'>
-  <!-- <view class='maskDelivery_address'>
-    <text class='maskDelivery_addressa'>请选择收获地址</text>
-    <text class='maskDelivery_addressb'>></text>
-  </view> -->
   <view class='maskDelivery_addressBox'>
     <view style='float:left;width:85%;'>
       <view class='addressBox_top'>
-        <text class='maskDelivery_addressBoxa'>请选择收获地址</text>
-        <text class='maskDelivery_addressBoxb'>15025684569</text>
+        <text class='maskDelivery_addressBoxa'>收货人：{{order.address.name}} {{order.address.mobile}}</text>
       </view>
-      <view class='addressBox_bottom'>收获地址：北京朝阳区 世纪东方城</view>
+      <view class='addressBox_bottom'>收货地址：{{order.address.province}} {{order.address.city}} {{order.address.area}} {{order.address.address}}</view>
     </view>
-    <view style='float:right;line-height:112rpx;' class='maskDelivery_addressb'>></view>
   </view>
   <view class='maskDelivery_content'>
-    <view class='allCommodity' wx:for="{{carts}}" wx:key="key">
+    <view class='allCommodity' wx:for="{{order.productList}}" wx:key="key">
       <view class='allCommodity_content'>
         <view class='allCommodity_contentLeft'>
-          <image src="{{item.img}}"></image>
+          <image src="{{item.image}}"></image>
         </view>
         <view class='allCommodity_contentright'>
           <view class=" {{item.isShow?'hidden':'show'}}">
-            <text class='contentright_title' decode="{{true}}">{{item.title}}</text>
+            <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
           </view>
-          <view class='contentright_hint'>{{item.hint}}</view>
+          <view class='contentright_hint'>{{item.productId==1 ? '398元买1送5，6盒/1组  5片1盒' : '5片1盒'}}</view>
           <view class='contentright_price'>
-            <text class='contentright_priceTotal'>{{item.total}}</text>
-            <text class='contentright_priceNum'>x{{item.num}}</text>
+            <text class='contentright_priceTotal'>￥{{item.price}}</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
           </view>
         </view>
       </view>
@@ -39,7 +32,7 @@
     <view class='nav_left'>
       <view class='navTotalprices'>
         <text>合计：</text>
-        <text class='navsizeClor'>￥{{totalPrice}}</text>
+        <text class='navsizeClor'>￥{{order.totalPrice}}</text>
       </view>
     </view>
   </view>

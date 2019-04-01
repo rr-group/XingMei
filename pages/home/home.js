@@ -137,7 +137,7 @@ Page({
         app.editTabbar();
         console.log('分享用户：' + options.uid);
         wx.showLoading({
-            title: '加载中' + options.uid
+            title: '加载中'
         });
         wx.getSystemInfo({
             //获取系统信息成功，将系统窗口的宽高赋给页面的宽高
@@ -208,10 +208,13 @@ Page({
                             totalShareCount: res.shareLv1Count + res.shareLv2Count,
                             shareLevel: res.shareLevel - 1
                         });
+                        var days = util.checkinDay(res.shareLevel - 1);
+                        var num = that.data.keepCount + 1;
+                        that.drawCircle(2 / days * num);
                     }
                 });
             }
-        });
+        },100);
     },
     /**
      * 跳转到详情
@@ -231,10 +234,5 @@ Page({
             desc: '自定义分享描述',
             path: '/pages/home/home?uid=123'
         }
-    },
-    clickEvent:function(e){ 
-        wx.navigateTo({
-            url: '/pages/share/share'
-        })
     }
 })

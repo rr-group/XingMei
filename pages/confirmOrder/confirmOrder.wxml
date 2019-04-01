@@ -5,34 +5,37 @@
     <text class='maskDelivery_addressb'>></text>
   </view> -->
   <view class='maskDelivery_addressBox'>
-    <view style='float:left;width:85%;'>
+    <view style='float:left;width:85%;' bindtap='tapAddress'>
       <view class='addressBox_top'>
-        <text class='maskDelivery_addressBoxa' bindtap='tapAddress'>请选择收获地址</text>
-        <text class='maskDelivery_addressBoxb'>15025684569</text>
+
+        <text class='maskDelivery_addressBoxa' wx:if='{{!address.id}}' bindtap='tapAddress'>请选择收货地址</text>
+        <text class='maskDelivery_addressBoxa' wx:else='{{address.id}}'>收货人：{{address.name}} {{address.mobile}}</text>
       </view>
-      <view class='addressBox_bottom'>收获地址：北京朝阳区 世纪东方城</view>
+      <view class='addressBox_bottom'>收货地址：{{address.province}} {{address.city}} {{address.area}} {{address.address}}</view>
     </view>
-    <view style='float:right;line-height:112rpx;' class='maskDelivery_addressb' bindtap='tapAddress'>></view>
+    <view style='float:right;line-height:112rpx;' class='maskDelivery_addressb' >></view>
   </view>
   <view class='maskDelivery_content'>
     <view class='allCommodity' wx:for="{{carts}}" wx:key="key">
       <view class='allCommodity_content'>
-        <view class='Commodity_select'>
-          <!-- wx:if 是否选择显示不同图标 -->
+        <!--<view class='Commodity_select'>
+          -->
+        <!-- wx:if 是否选择显示不同图标 -->
+        <!--
           <icon wx:if="{{item.selected}}" type="success" color="#d288c3" bindtap="selectList" data-index="{{index}}" size="18" />
           <icon wx:else="" type="circle" bindtap="selectList" data-index="{{index}}" size="18" />
-        </view>
+        </view>-->
         <view class='allCommodity_contentLeft'>
-          <image src="{{item.img}}"></image>
+          <image src="{{item.image}}"></image>
         </view>
         <view class='allCommodity_contentright'>
           <view class=" {{item.isShow?'hidden':'show'}}">
-            <text class='contentright_title' decode="{{true}}">{{item.title}}</text>
+            <text class='contentright_title' decode="{{true}}">{{item.name}}</text>
           </view>
-          <view class='contentright_hint'>{{item.hint}}</view>
+          <view class='contentright_hint'>{{item.desc}}</view>
           <view class='contentright_price'>
-            <text class='contentright_priceTotal'>{{item.total}}</text>
-            <text class='contentright_priceNum'>x{{item.num}}</text>
+            <text class='contentright_priceTotal'>￥{{item.price}} 元</text>
+            <text class='contentright_priceNum'>x{{item.count}}</text>
           </view>
         </view>
       </view>
@@ -40,12 +43,12 @@
   </view>
   <!-- 底部导航 -->
   <view class='bottom_nav'>
-    <!-- wx:if 是否全选显示不同图标 -->
+    <!-- wx:if 是否全选显示不同图标 --><!--
     <view class='navCheckall'>
       <icon wx:if="{{selectAllStatus}}" class='allSelelct' type="success" color="#d288c3" bindtap="selectAll" size="18" />
       <icon wx:else="" type="circle" class='allSelelct' bindtap="selectAll" size="18" />
       <view class='navCheckall_text'>全选</view>
-    </view>
+    </view>-->
     <!-- 总价 -->
     <view class='nav_left'>
       <view class='navTotalprices'>

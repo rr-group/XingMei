@@ -14,15 +14,7 @@ Page({
         topList: ["0", "0", "0"],
         withdrawMoney: '',
         getInput: '',
-        //获取
-        Howget: [
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-        ],
+        desc: '',//文案-获取奖金
         //累计佣金
         totalBrokerage: [],
         //已提现佣金
@@ -78,10 +70,11 @@ Page({
     //确认提现
     tapWithdraw(e) {
         var that = this;
-        console.log(that.data.remainAmount, that.data.withdrawMoney);
         if (that.data.remainAmount < that.data.withdrawMoney) {
-            wx.showLoading({
-                title: '提现金额不能大于可领取金额！'
+            wx.showToast({
+                title: '提现金额不能大于可领取金额！',
+                icon: 'none',
+                duration: 2000
             });
         } else {
             util.requestApi({
@@ -91,7 +84,18 @@ Page({
                     money: that.data.withdrawMoney
                 },
                 success: res => {
-
+                    that.setData({
+                        withdrawMoney:''
+                    });
+                    that.bindclones();
+                    wx.showToast({
+                        title: '提现成功，等待客服与你联系转账！',
+                        icon: 'none',
+                        duration: 2000
+                    });
+                    setTimeout(function(){
+                        that.onLoad();
+                    },2000);
                 }
             });
         }
@@ -117,7 +121,7 @@ Page({
             url: 'user/social',
             success: res => {
                 that.setData({
-                    topList: [res.totalBrokerage, res.usedBrokerage, res.totalBrokerage - res.usedBrokerage],
+                    topList: [res.totalBrokerage, res.usedBrokerage, res.totalBrokerage - res.usedBrokerage - res.usingBrokerage],
                     remainAmount: res.totalBrokerage - res.usedBrokerage - res.usingBrokerage
                 });
                 wx.hideLoading();
@@ -147,6 +151,15 @@ Page({
                 success: res => {
                     that.setData({
                         withdrawList: res.data
+                    });
+                }
+            });
+            //文案-如何获取面膜
+            util.requestApi({
+                url: 'site/article/1',
+                success: res => {
+                    that.setData({
+                        desc: res.content
                     });
                 }
             });

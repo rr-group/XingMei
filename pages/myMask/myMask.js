@@ -13,27 +13,16 @@ Page({
         topList: ["0", "0", "0"],
         telValue: '',
         getInput: '',
-        //获取
-        Howget: [
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-            "每天过来签到和分享啊，分享成功之后就可以",
-        ],
-        //累计面膜
-        totalList: [],
-        //发货
-        sendList: [],
+        desc: '', //文案获取面膜
+        totalList: [],  //累计面膜列表
+        sendList: [], //发货列表
         myBounsTitle: "如何领取面膜",
         accumulateTitle: "累计面膜",
         withdrawTitle: "已发面膜"
     },
 
     // 点击如何获取面膜
-    bindbonus(e) {
-        var that = this;
+    bindbonus() {
         this.setData({
             nullhits: false, //弹窗显示
             idBtn: 0
@@ -45,22 +34,19 @@ Page({
         });
     },
     // 点击累计面膜
-    accumulate(e) {
-        var that = this;
+    accumulate() {
         this.setData({
             nullhits: false, //弹窗显示
             idBtn: 1
         });
     },
     // 点击已发面膜
-    withdraw(e) {
-        var that = this;
+    withdraw() {
         this.setData({
             nullhits: false, //弹窗显示
             idBtn: 2
         });
     },
-
     //关闭弹框
     bindclones() {
         this.setData({
@@ -68,23 +54,31 @@ Page({
         });
     },
     //点击发货
-    tapSend: function (e) {
-        var remainCount = this.data.totalGiftCount - this.data.usedGiftCount;
+    tapSend: function () {
+        var remainCount = parseInt(this.data.topList[2]);
+        if (remainCount < 5) {
+            wx.showToast({
+                title: '5片以上才能发货！',
+                icon: 'none',
+                duration: 1200
+            });
+            return;
+        }
         var count = remainCount - remainCount % 5;
         //设置订单缓存
         wx.setStorageSync('order', {
-            productId: 1,
+            productId: 2,
             count: count
         });
         wx.navigateTo({
             url: '../../pages/confirmOrder/confirmOrder'
         });
     },
-    onLoad: function (options) {
+    onLoad: function () {
         var that = this;
 
         wx.showLoading({
-            title: '加载中',
+            title: '加载中'
         });
 
         //获取用户社交信息
@@ -93,7 +87,7 @@ Page({
             type: 'get',
             success: res => {
                 that.setData({
-                    topList: [res.totalGiftCount, res.usedGiftCount, res.totalGiftCount - res.usedGiftCount]
+                    topList: [res.totalGiftCount, res.usedGiftCount, res.totalGiftCount - res.usedGiftCount-res.usingGiftCount]
                 });
                 wx.hideLoading();
             }
@@ -107,7 +101,6 @@ Page({
                     operate: 1
                 },
                 success: res => {
-                    console.log(res);
                     that.setData({
                         totalList: res.data
                     });
@@ -120,9 +113,17 @@ Page({
                     operate: -1
                 },
                 success: res => {
-                    console.log(res);
                     that.setData({
                         sendList: res.data
+                    });
+                }
+            });
+            //文案-如何获取面膜
+            util.requestApi({
+                url: 'site/article/2',
+                success: res => {
+                    that.setData({
+                        desc: res.content
                     });
                 }
             });
@@ -177,4 +178,4 @@ Page({
     onShareAppMessage: function () {
 
     }
-})
+});
