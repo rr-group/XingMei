@@ -72,11 +72,13 @@
 
 .sharea {
   position: absolute;
+  width:100rpx;
   bottom: 0px;
   left:43%;
   height:130rpx;
   border: none;
    background: transparent;
+   /* background: pink; */
 }
 .mya{
   position: absolute;

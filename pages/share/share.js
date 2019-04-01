@@ -12,8 +12,8 @@ Page({
    */
   data: {
     downloadPosterBg: "../../images/sharedear.jpg",
-      avatarUrl: "",
-      nickName: ''
+    avatarUrl: "",
+    nickName: ''
   },
 
   /**
@@ -38,48 +38,61 @@ Page({
     }
   },
   onLoad: function(options) {
-    console.log(app.globalData.userInfo)
+    var that = this;
+    wx.getSetting({
+      success: function(res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function(res) {
+              console.log(res.userInfo)
+              //用户已经授权过
+              that.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                nickName: res.userInfo.nickName
+              })
+              let promise1 = new Promise(function(resolve, reject) {
+                wx.getImageInfo({
+                  src: that.data.downloadPosterBg,
+                  success: function(res) {
+                    resolve(res);
+                  }
+                })
+              });
+              // let promise2 = new Promise(function (resolve, reject) {
+              //   wx.getImageInfo({
+              //     src: that.data.avatarUrl,
+              //     success: function (res) {
+              //       resolve(res);
+              //     }
+              //   })
+              // });
+
+              Promise.all([
+                promise1
+              ]).then(res => {
+                console.log(res)
+                that.drawImage(res)
+              })
+
+            }
+          })
+        }
+      }
+    })
     // const wxGetImageInfo = this.wxPromisify(wx.getImageInfo)
     // const wxGetImageInfoa = this.wxPromisify(wx.getImageInfo)
-    var that = this;
-    that.setData({
-      avatarUrl: app.globalData.userInfo.avatarUrl,
-      nickName: app.globalData.userInfo.nickName
-    })
-    let promise1 = new Promise(function (resolve, reject) {
-      wx.getImageInfo({
-        src: that.data.downloadPosterBg,
-        success: function (res) {
-          resolve(res);
-        }
-      })
-    });
-    // let promise2 = new Promise(function (resolve, reject) {
-    //   wx.getImageInfo({
-    //     src: that.data.avatarUrl,
-    //     success: function (res) {
-    //       resolve(res);
-    //     }
-    //   })
-    // });
 
-    Promise.all([
-      promise1
-    ]).then(res => {
-      console.log(res)
-      that.drawImage(res)
-    })
-   
+
   },
-  drawImage: function(res){
+  drawImage: function(res) {
     const ctx = wx.createCanvasContext('shareCanvas')
     // 底图
     ctx.drawImage('../../' + res[0].path, 0, 0, 320, 500)
     // //头像
     ctx.save() // 对当前区域保存
     ctx.beginPath() // 开始新的区域
-    ctx.arc(60, 120, 28, 0, 2 * Math.PI,true);
-    ctx.clip();  // 从画布上裁剪出这个圆形
+    ctx.arc(60, 120, 28, 0, 2 * Math.PI, true);
+    ctx.clip(); // 从画布上裁剪出这个圆形
     ctx.drawImage(this.data.avatarUrl, 30, 90, 60, 64) // 把图片填充进裁剪的圆形
     ctx.restore() // 恢复
     ctx.setTextAlign('center') // 文字居中
